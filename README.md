@@ -12,7 +12,7 @@
    git add .
    git commit -m "android-prep site"
    git branch -M main
-   git remote add origin https://github.com/<твой_ник>/android-prep.git
+   git remote add origin https://github.com/Kagemora/android-prep.git
    git push -u origin main
    ```
 4. В настройках репозитория: **Settings → Pages → Source: Deploy from a branch → Branch: main / (root)**.
