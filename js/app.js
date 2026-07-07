@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  const FREQ_LABEL = { '🔥': 'очень часто', '⭐⭐⭐': 'часто', '⭐⭐': 'бывает', '⭐': 'редко', '◦': 'иногда' };
+  const FREQ_LABEL = { '🔥': 'часто спрашивают', '⭐': 'бывает', '🥶': 'редко' };
   const LEVEL_CLASS = (lvl) => {
     if (!lvl) return 'lvl-m';
     const l = lvl.toLowerCase();
@@ -137,7 +137,7 @@
           <span class="q-level ${lvlClass}">${q.level || ''}</span>
         </div>
         <div class="q-text">
-          <span class="q-num">${q.id}.</span> ${q.question}
+          <span class="q-num">${q.localNum}.</span> ${q.question}
           ${q.source ? `<div class="q-source">Спрашивают: ${q.source}</div>` : ''}
         </div>
         <span class="q-chevron">›</span>
