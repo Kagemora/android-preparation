@@ -193,6 +193,9 @@ strong { color: #16150F; font-weight: 700; }
   white-space: pre;
 }
 .q-formula pre.code-block .cm { color: var(--text-dimmer); font-style: italic; }
+.q-formula pre.code-block .kw { color: #a626a4; font-weight: 600; }
+.q-formula pre.code-block .str { color: #50a14f; }
+.q-formula pre.code-block .an { color: #c18401; }
 
 .q-empty { font-size: 13px; color: var(--text-dimmer); font-style: italic; padding: 4px 0; }
 .q-empty-cat { color: var(--text-dim); font-size: 13.5px; padding: 20px 0; }
