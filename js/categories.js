@@ -1,24 +1,32 @@
 // Метаданные категорий: порядок в массиве = порядок в сайдбаре.
-// 12 основных категорий = 12 из 13 исходных md-файлов (1 файл = 1 категория).
-// 13-й файл (Behavioral) и Lifehacks вынесены в "Справочные материалы".
+// 18 категорий — таксономия пользователя (computer-science-style группировка).
+// + Algorithms и SystemDesign (не участвовали в реорганизации, перенесены как были).
 const CATEGORIES = [
-  { id: 'kotlin',       name: 'Kotlin',       ext: '.kt',   badge: 'K',  color: '#a855c9' },
-  { id: 'java',         name: 'Java',         ext: '.java', badge: 'J',  color: '#c9752c' },
-  { id: 'android',      name: 'AndroidSDK',   ext: '.kt',   badge: 'A',  color: '#1f9e7e' },
-  { id: 'ui',           name: 'UI',           ext: '.kt',   badge: 'U',  color: '#2f6fb0' },
-  { id: 'concurrency',  name: 'Concurrency',  ext: '.kt',   badge: 'Cn', color: '#7c5cbf' },
-  { id: 'collections',  name: 'Collections',  ext: '.kt',   badge: 'Cl', color: '#2a8fb0' },
-  { id: 'patterns',     name: 'Patterns',     ext: '.kt',   badge: 'P',  color: '#a1791f' },
-  { id: 'architecture', name: 'Architecture', ext: '.kt',   badge: 'Ar', color: '#b05a3a' },
-  { id: 'network',      name: 'Network',      ext: '.kt',   badge: 'N',  color: '#2f9e58' },
-  { id: 'tools',        name: 'Tools',        ext: '.sh',   badge: 'T',  color: '#c94f56' },
-  { id: 'algorithms',   name: 'Algorithms',   ext: '.kt',   badge: 'AL', color: '#9c3fb0' },
-  { id: 'systemdesign', name: 'SystemDesign', ext: '.md',   badge: 'SD', color: '#2b7fc4' },
+  { id: 'kotlin',       name: 'Kotlin',       ext: '.kt',   badge: 'K',  color: '#a25433' },
+  { id: 'java',         name: 'Java',         ext: '.java', badge: 'J',  color: '#3433a2' },
+  { id: 'collections',  name: 'Collections',  ext: '.kt',   badge: 'Cl', color: '#52a233' },
+  { id: 'android',      name: 'AndroidSDK',   ext: '.kt',   badge: 'A',  color: '#a23373' },
+  { id: 'viewxml',      name: 'ViewXML',      ext: '.kt',   badge: 'Vx', color: '#3393a2' },
+  { id: 'compose',      name: 'Compose',      ext: '.kt',   badge: 'Cp', color: '#a29133' },
+  { id: 'concurrency',  name: 'Concurrency',  ext: '.kt',   badge: 'Cn', color: '#7033a2' },
+  { id: 'storage',      name: 'Storage',      ext: '.kt',   badge: 'St', color: '#33a250' },
+  { id: 'network',      name: 'Network',      ext: '.kt',   badge: 'N',  color: '#a23337' },
+  { id: 'architecture', name: 'Architecture', ext: '.kt',   badge: 'Ar', color: '#3357a2' },
+  { id: 'patterns',     name: 'Patterns',     ext: '.kt',   badge: 'P',  color: '#78a233' },
+  { id: 'principles',   name: 'Principles',   ext: '.kt',   badge: 'Pr', color: '#a23398' },
+  { id: 'oop',          name: 'OOP',          ext: '.kt',   badge: 'O',  color: '#33a28c' },
+  { id: 'di',           name: 'DI',           ext: '.kt',   badge: 'DI', color: '#a26b33' },
+  { id: 'testing',      name: 'Testing',      ext: '.kt',   badge: 'T',  color: '#4b33a2' },
+  { id: 'build',        name: 'Build',        ext: '.sh',   badge: 'B',  color: '#3ba233' },
+  { id: 'performance',  name: 'Performance',  ext: '.kt',   badge: 'Pf', color: '#a2335c' },
+  { id: 'tools',        name: 'Tools',        ext: '.sh',   badge: 'Tl', color: '#337ca2' },
+  { id: 'algorithms',   name: 'Algorithms',   ext: '.kt',   badge: 'AL', color: '#9da233' },
+  { id: 'systemdesign', name: 'SystemDesign', ext: '.md',   badge: 'SD', color: '#8733a2' },
 ];
 
 const REFERENCE_CATEGORIES = [
-  { id: 'resume',    name: 'Resume',    ext: '.md', badge: 'R', color: '#b09522' },
-  { id: 'lifehacks', name: 'Lifehacks', ext: '.md', badge: 'L', color: '#1f9e9e' },
+  { id: 'resume',    name: 'Resume',    ext: '.md', badge: 'R', color: '#33a267' },
+  { id: 'lifehacks', name: 'Lifehacks', ext: '.md', badge: 'L', color: '#a24633' },
 ];
 
 const ALL_CATEGORIES = [...CATEGORIES, ...REFERENCE_CATEGORIES];
