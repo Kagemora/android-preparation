@@ -20,6 +20,7 @@ const CATEGORIES = [
   { id: 'build',        name: 'Build',        ext: '.sh',   badge: 'B',  color: '#3ba233' },
   { id: 'performance',  name: 'Performance',  ext: '.kt',   badge: 'Pf', color: '#a2335c' },
   { id: 'tools',        name: 'Tools',        ext: '.sh',   badge: 'Tl', color: '#337ca2' },
+  { id: 'kmp',          name: 'KMP',          ext: '.kt',   badge: 'KM', color: '#c65a9e' },
   { id: 'algorithms',   name: 'Algorithms',   ext: '.kt',   badge: 'AL', color: '#9da233' },
   { id: 'systemdesign', name: 'SystemDesign', ext: '.md',   badge: 'SD', color: '#8733a2' },
 ];
