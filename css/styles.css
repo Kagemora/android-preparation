@@ -177,25 +177,25 @@ strong { color: #16150F; font-weight: 700; }
 .lbl-example { color: #1f7a3d; }
 
 .q-formula pre.code-block {
-  background: #f1ede2;
-  border: 1px solid var(--border);
+  background: #282c34;
+  border: 1px solid #21252b;
   border-radius: 8px;
-  padding: 12px 14px;
+  padding: 14px 16px;
   overflow-x: auto;
   margin: 4px 0 14px;
 }
 .q-formula pre.code-block code {
   font-family: var(--mono);
   font-size: 12.5px;
-  line-height: 1.65;
-  color: #2A2A26;
+  line-height: 1.7;
+  color: #abb2bf;
   background: none;
   white-space: pre;
 }
-.q-formula pre.code-block .cm { color: var(--text-dimmer); font-style: italic; }
-.q-formula pre.code-block .kw { color: #a626a4; font-weight: 600; }
-.q-formula pre.code-block .str { color: #50a14f; }
-.q-formula pre.code-block .an { color: #c18401; }
+.q-formula pre.code-block .cm { color: #5c6370; font-style: italic; }
+.q-formula pre.code-block .kw { color: #c678dd; font-weight: 600; }
+.q-formula pre.code-block .str { color: #98c379; }
+.q-formula pre.code-block .an { color: #e5c07b; }
 
 .q-empty { font-size: 13px; color: var(--text-dimmer); font-style: italic; padding: 4px 0; }
 .q-empty-cat { color: var(--text-dim); font-size: 13.5px; padding: 20px 0; }
