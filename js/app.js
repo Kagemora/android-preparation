@@ -132,10 +132,11 @@
     <div class="q-card" data-id="${q.id}">
       <div class="q-row">
         <input type="checkbox" class="q-check" ${checked} title="Отметить как выученное" />
+        ${(q.freq || q.level) ? `
         <div class="q-tags">
           <span class="q-freq" title="${FREQ_LABEL[q.freq] || ''}">${q.freq || ''}</span>
           <span class="q-level ${lvlClass}">${q.level || ''}</span>
-        </div>
+        </div>` : ''}
         <div class="q-text">
           <span class="q-num">${q.localNum}.</span> ${q.question}
           ${q.source ? `<div class="q-source">Спрашивают: ${q.source}</div>` : ''}
