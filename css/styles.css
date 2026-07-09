@@ -179,6 +179,8 @@ strong { color: #16150F; font-weight: 700; }
 .lbl-what { color: #2b6cb0; }
 .lbl-diff { color: #a1791f; }
 .lbl-example { color: #1f7a3d; }
+.lbl-code { color: #1f7a3d; }
+.q-code-label { margin: 10px 0 4px; }
 
 .q-formula pre.code-block {
   background: #282c34;

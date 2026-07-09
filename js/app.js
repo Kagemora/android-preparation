@@ -127,7 +127,7 @@
   function questionCardHTML(q) {
     const checked = progress.has(q.id) ? 'checked' : '';
     const lvlClass = LEVEL_CLASS(q.level);
-    const hasAnswer = q.answer && (q.answer.what || q.answer.diff || q.answer.example);
+    const hasAnswer = q.answer && (q.answer.what || q.answer.diff || q.answer.example || q.answer.code);
     return `
     <div class="q-card" data-id="${q.id}">
       <div class="q-row">
@@ -154,6 +154,7 @@
             ${q.answer.what ? `<p><span class="lbl lbl-what">Что это</span> ${q.answer.what}</p>` : ''}
             ${q.answer.diff ? `<p><span class="lbl lbl-diff">Ключевое отличие</span> ${q.answer.diff}</p>` : ''}
             ${q.answer.example ? `<p><span class="lbl lbl-example">Пример / следствие</span> ${q.answer.example}</p>` : ''}
+            ${q.answer.code ? `<div class="q-code-label"><span class="lbl lbl-code">Пример кода</span></div>${q.answer.code}` : ''}
           ` : `<div class="q-empty">Разбор появится здесь позже — пока отмечай вопрос как ориентир для повторения.</div>`}
         </div>
       </div>
