@@ -26,9 +26,10 @@ const CATEGORIES = [
 ];
 
 const REFERENCE_CATEGORIES = [
-  { id: 'resume',    name: 'Resume',    ext: '.md', badge: 'R', color: '#33a267' },
-  { id: 'lifehacks', name: 'Lifehacks', ext: '.md', badge: 'L', color: '#a24633' },
-  { id: 'slang',     name: 'Slang',     ext: '.md', badge: 'Sl', color: '#4a7ba6' },
+  { id: 'resume',       name: 'Resume',       ext: '.md', badge: 'R',  color: '#33a267' },
+  { id: 'lifehacks',    name: 'Lifehacks',    ext: '.md', badge: 'L',  color: '#a24633' },
+  { id: 'slang',        name: 'Slang',        ext: '.md', badge: 'Sl', color: '#4a7ba6' },
+  { id: 'allquestions', name: 'AllQuestions', ext: '.md', badge: 'Q',  color: '#6b5b95' },
 ];
 
 const ALL_CATEGORIES = [...CATEGORIES, ...REFERENCE_CATEGORIES];

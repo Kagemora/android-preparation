@@ -28,6 +28,19 @@
     (byCategory[q.category] ||= []).push(q);
   }
 
+  // Виртуальная категория "все вопросы" — не хранит отдельную копию данных,
+  // а на лету собирает вопросы из всех технических категорий, кроме Algorithms/SystemDesign
+  // (в них вопросы обычно требуют кода/решения, а не короткого устного ответа).
+  const ALLQ_EXCLUDED = new Set(['algorithms', 'systemdesign']);
+  const ALLQ_ID = 'allquestions';
+  byCategory[ALLQ_ID] = CATEGORIES
+    .filter(c => !ALLQ_EXCLUDED.has(c.id))
+    .flatMap(c => byCategory[c.id] || []);
+
+  function stripHtml(html) {
+    return (html || '').replace(/<[^>]+>/g, '').trim();
+  }
+
   function countsFor(catId) {
     const list = byCategory[catId] || [];
     const total = list.length;
@@ -47,13 +60,14 @@
 
   function renderRow(cat) {
     const { done, total } = countsFor(cat.id);
+    const countLabel = cat.id === ALLQ_ID ? (total ? `${total}` : '—') : (total ? `${done}/${total}` : '—');
     const row = document.createElement('div');
     row.className = 'file-item';
     row.dataset.cat = cat.id;
     row.innerHTML = `
       <span class="badge" style="background:${cat.color}22;color:${cat.color};border-color:${cat.color}55">${cat.badge}</span>
       <span class="file-name">${cat.name}<span class="file-ext">${cat.ext}</span></span>
-      <span class="file-count">${total ? `${done}/${total}` : '—'}</span>
+      <span class="file-count">${countLabel}</span>
     `;
     row.addEventListener('click', () => openCategory(cat.id));
     return row;
@@ -167,6 +181,11 @@
     tabLabel.textContent = cat.name + cat.ext;
     tabDot.style.background = cat.color;
 
+    if (cat.id === ALLQ_ID) {
+      renderAllQuestionsView(cat);
+      return;
+    }
+
     const list = (byCategory[cat.id] || []).filter(q => matchesQuery(q, state.query));
     const { done, total } = countsFor(cat.id);
 
@@ -185,6 +204,81 @@
       html += items.map(questionCardHTML).join('');
     }
     questionList.innerHTML = html;
+  }
+
+  // ---------- AllQuestions — плоский список без ответов, сгруппированный по исходной категории ----------
+  function groupByOriginalCategory(list) {
+    const order = [];
+    const map = new Map();
+    for (const q of list) {
+      const catName = CATEGORY_BY_ID[q.category]?.name || q.category;
+      if (!map.has(catName)) { map.set(catName, []); order.push(catName); }
+      map.get(catName).push(q);
+    }
+    return order.map(k => [k, map.get(k)]);
+  }
+
+  function buildAllQuestionsPlainText(list) {
+    let out = '';
+    for (const [catName, items] of groupByOriginalCategory(list)) {
+      out += `=== ${catName} ===\n`;
+      items.forEach((q, i) => { out += `${i + 1}. ${stripHtml(q.question)}\n`; });
+      out += '\n';
+    }
+    return out.trim();
+  }
+
+  function renderAllQuestionsView(cat) {
+    const fullList = byCategory[cat.id] || [];
+    const list = fullList.filter(q => matchesQuery(q, state.query));
+
+    contentHeader.textContent = cat.name + cat.ext;
+    contentSub.textContent = `${fullList.length} вопросов из всех технических категорий, кроме Algorithms и SystemDesign — без ответов, для самопроверки или переноса в другой инструмент`;
+
+    const groups = groupByOriginalCategory(list);
+    let listHtml = '';
+    for (const [catName, items] of groups) {
+      listHtml += `<div class="subcat-title">${escapeHtml(catName)}</div>`;
+      listHtml += `<ol class="plain-q-list">${items.map(q => `<li>${q.question}</li>`).join('')}</ol>`;
+    }
+    if (!list.length) {
+      listHtml = `<div class="q-empty-cat">Ничего не найдено${state.query ? ' по запросу «' + escapeHtml(state.query) + '»' : ''}.</div>`;
+    }
+
+    questionList.innerHTML = `
+      <div class="allq-toolbar">
+        <button class="allq-copy-btn" id="allqCopyBtn">Скопировать все вопросы</button>
+        <span class="allq-copy-status" id="allqCopyStatus"></span>
+      </div>
+      ${listHtml}
+    `;
+
+    const copyBtn = document.getElementById('allqCopyBtn');
+    const copyStatus = document.getElementById('allqCopyStatus');
+    copyBtn.addEventListener('click', async () => {
+      const targetList = state.query ? list : fullList;   // при активном поиске копируем ровно отфильтрованное, иначе — всё
+      const text = buildAllQuestionsPlainText(targetList);
+      try {
+        await navigator.clipboard.writeText(text);
+        copyStatus.textContent = `Скопировано (${targetList.length} вопросов)`;
+      } catch (e) {
+        // резервный способ, если Clipboard API недоступен (старые браузеры, файловый протокол и т.п.)
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          copyStatus.textContent = `Скопировано (${targetList.length} вопросов)`;
+        } catch (e2) {
+          copyStatus.textContent = 'Не удалось скопировать — выделите текст вручную';
+        }
+        document.body.removeChild(textarea);
+      }
+      setTimeout(() => { copyStatus.textContent = ''; }, 3000);
+    });
   }
 
   function escapeHtml(s) {
@@ -220,6 +314,7 @@
     const pct = total ? Math.round((done / total) * 100) : 0;
     let grid = '';
     for (const cat of [...CATEGORIES, ...REFERENCE_CATEGORIES]) {
+      if (cat.id === ALLQ_ID) continue;   // агрегированный вид, не показываем отдельной плиткой
       const c = countsFor(cat.id);
       if (!c.total) continue;
       const p = Math.round((c.done / c.total) * 100);
