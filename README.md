@@ -6,14 +6,14 @@
 
 ## Что внутри
 
-**1010 карточек** вопрос-ответ и справочных материалов:
+**1025 карточек** вопрос-ответ и справочных материалов:
 
-- **660 вопросов** в 18 технических категориях (Kotlin, Java, Collections, AndroidSDK, ViewXML, Compose, Concurrency, Storage, Network, Architecture, Patterns, Principles, OOP, DI, Testing, Build, Performance, Tools, KMP)
+- **675 вопросов** в 18 технических категориях (Kotlin, Java, Collections, AndroidSDK, ViewXML, Compose, Concurrency, Storage, Network, Architecture, Patterns, Principles, OOP, DI, Testing, Build, Performance, Tools, KMP)
 - **186 вопросов** отдельно в Algorithms и SystemDesign — задачи с кодом и решениями, включая живые задачи с реальных собеседований (не только теория)
 - **30 вопросов** в Resume — как отвечать на собеседовании, готовые формулировки под STAR
 - **127 терминов** в Slang — словарь IT-сленга (от «апрувить» до «эстимейт»)
 - **7 карточек** в Lifehacks — короткие практические советы
-- **660 вопросов без ответов** одним списком в AllQuestions — для самопроверки или копирования в другой инструмент
+- **675 вопросов без ответов** одним списком в AllQuestions — для самопроверки или копирования в другой инструмент
 
 Вопросы собраны из ~100 открытых и закрытых источников — реальных транскриптов собеседований, YouTube-разборов, профильных сайтов и личных конспектов, включая интервью в Т-Банк, СБЕР, Яндекс (включая Yandex Fintech и Дзен), Авито, Wildberries, Ozon, Rutube, ПСБ, Альфа-Банк, X5 Tech, М-Видео, МТС, М4 Bank, Дом.РФ, Иннотех, Контур, Купибилет, ОТП Банк, Совкомбанк, Спортмастер, Urent, Uzum Technologies, Radium Finance, Revolut, Google, Lyft/Bolt, Крипта, Гроуфуд, Сетка ВК, Dodo Engineering, Solvery, Podlodka, Android Broadcast и других — плюс дополнено собственной проработкой и мок-интервью.
 
